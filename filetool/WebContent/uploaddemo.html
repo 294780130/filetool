@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>upload</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript">
+		function doUpload() {  
+		     var formData = new FormData($("#uploadForm")[0]);  
+		     $.ajax({  
+		          url: 'fileInfo/upload' ,  
+		          type: 'post',  
+		          data: formData,  
+		          //async: false,  
+		          cache: false,  
+		          contentType: false,  
+		          processData: false,  
+		          success: function (response) {  
+		             alert("上传成功");
+		          },  
+		          error: function (response) {  
+		              
+		          }  
+		     });  
+		}  
+	</script>
+</head>
+<body>
+	<h1>表单上传</h1>
+	<form name="Form2" action="fileInfo/upload" method="post"  enctype="multipart/form-data">
+		<input type="file" name="file" >
+		<input type="submit" value="upload"/>
+	</form>
+	
+	<h1>ajax上传</h1>
+	<form id= "uploadForm">   
+	  <p >标签： <input type="text" name="skill"/></p>  
+	  <p >版本： <input type="text" name="version"/></p> 
+	  <p >说明： <input type="text" name="fileDesc"/></p> 
+      <p >上传文件： <input type="file" name="file"/></p>  
+      <input type="button" value="上传" onclick="doUpload()" />  
+	</form>  
+	
+	<a href="fileInfo/down?fileId=a0703bd6a9474ddfb1834bfd32e17fe7">下载</a>
+</body>
+</html>
